@@ -15,7 +15,7 @@ export default function Home() {
       </Head>
       <main>
         <div className={styles.container}>
-          <h1 className={styles.title}>雄斗くんからの挑戦状2</h1>
+          <h1 className={styles.title}>雄斗くんからの挑戦状</h1>
           <Login />
         </div>
       </main>
