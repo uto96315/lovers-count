@@ -1,35 +1,29 @@
 import { Time } from "components/atoms";
 import Times from "components/molecules/times";
+import setTime from "functions/setTIme";
 import { NextPage } from "next";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 
 const CountDownPage: NextPage = () => {
-    const goalDate = new Date(2023, 3, 5, 10, 0, 0);
+    const goalDate = new Date(2023, 2, 31, 10, 0, 0);
     const [remainingTime, setRemainingTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    const meet: boolean = true; // 現在あっているかどうか
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = goalDate.getTime() - now;
+        setTime(goalDate, setRemainingTime);
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            setRemainingTime({ days, hours, minutes, seconds });
-        }, 1000);
-
-        return () => clearInterval(interval);
     }, [goalDate]);
 
 
     return (
         <div className={styles.container}>
             <div className={styles.titleContainer}>
-                <p>会えるまで残り</p>
+                <p className=" text-xl py-3">
+                    現在一緒にいます( ◠‿◠ )
+                </p>
+                <p>{meet ? "離れる時間まで残り..." : "会えるまで残り"}</p>
             </div>
             <div className={styles.times}>
                 <Times
@@ -40,16 +34,18 @@ const CountDownPage: NextPage = () => {
                 />
             </div>
 
-            <div>
-                <Image src={"/IMG_5288.JPG"} alt={""} width={1000} height={0} />
-                <Image src={"/IMG_4465.jpeg"} alt={""} width={1000} height={0} />
-                <Image src={"/IMG_4482.JPG"} alt={""} width={1000} height={0} />
-                <Image src={"/IMG_4576.jpeg"} alt={""} width={1000} height={0} />
-                <Image src={"/IMG_4596.JPG"} alt={""} width={1000} height={0} />
-                <Image src={"/IMG_4690.jpeg"} alt={""} width={1000} height={0} />
-                <Image src={"/IMG_4691.jpeg"} alt={""} width={1000} height={0} />
-                <Image src={"/IMG_4824.JPG"} alt={""} width={1000} height={0} />
-            </div>
+            {meet ? null
+                : <div>
+                    <Image src={"/IMG_5288.JPG"} alt={""} width={1000} height={0} />
+                    <Image src={"/IMG_4465.jpeg"} alt={""} width={1000} height={0} />
+                    <Image src={"/IMG_4482.JPG"} alt={""} width={1000} height={0} />
+                    <Image src={"/IMG_4576.jpeg"} alt={""} width={1000} height={0} />
+                    <Image src={"/IMG_4596.JPG"} alt={""} width={1000} height={0} />
+                    <Image src={"/IMG_4690.jpeg"} alt={""} width={1000} height={0} />
+                    <Image src={"/IMG_4691.jpeg"} alt={""} width={1000} height={0} />
+                    <Image src={"/IMG_4824.JPG"} alt={""} width={1000} height={0} />
+                </div>}
+
         </div>
     );
 };

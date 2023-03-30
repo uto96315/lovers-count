@@ -1,10 +1,15 @@
 import Head from 'next/head';
 import { Inter } from '@next/font/google';
 import Login from 'components/organisms/login';
+import { useState } from 'react';
+import NowMeet from 'components/organisms/nowMeet';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
+
+  const meet = false; // ここでログイン画面に遷移するかどうかを設定する
+
   return (
     <>
       <Head>
