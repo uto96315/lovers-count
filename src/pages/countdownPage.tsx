@@ -20,6 +20,9 @@ const CountDownPage: NextPage = () => {
     return (
         <div className={styles.container}>
             <div className={styles.titleContainer}>
+                {meet ? <p className=" text-xl py-3">
+                    現在一緒にいます( ◠‿◠ )
+                </p> : null}
                 <p className=" text-xl py-3">
                     現在一緒にいます( ◠‿◠ )
                 </p>
