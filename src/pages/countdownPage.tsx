@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 
 const CountDownPage: NextPage = () => {
-    const goalDate = new Date(2023, 3, 6, 23, 0, 0);
+    const goalDate = new Date(2023, 3, 9, 23, 0, 0);
     const [remainingTime, setRemainingTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
     const meet: boolean = false; // 現在あっているかどうか
 
